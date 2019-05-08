@@ -2,14 +2,13 @@
 $WorkingDirectory = "C:\Temp\"
 if ((Test-Path $WorkingDirectory) -Eq $False) {New-Item -ItemType Directory -Path $WorkingDirectory | Out-Null}
 $Date = Get-Date -Format yyyy-MM-dd_HH.mm.ss
-$LogRoot = $WorkingDirectory + $Date
+$Root = $WorkingDirectory + $Date
 $Log = $LogRoot + "-Transcript.txt"
 Start-transcript $Log | Out-Null
 #endregion
 
     #region ##### SETUP #####
-    $ExportRoot = $WorkingDirectory + $Date
-    $Export = $ExportRoot + "-AzureIaaS-Export.csv"
+    $Export = $Root + "-AzureIaaS-Export.csv"
     $Report = @()
     $VMs = Get-AzVM
     $INTERFACEs = Get-AzNetworkInterface
